@@ -9,7 +9,7 @@ The purpose of this inventory is to translate approved business requirements int
 | ID | Screen | Purpose | Priority | Status |
 |---|---|---|---|---|
 | P01 | Login / OTP | Authenticate registered users and route by role | Must | **Defined v0.1** |
-| P02 | Home Dashboard | Daily overview of each child | Must | To detail |
+| P02 | Home Dashboard | Daily overview of each child | Must | **Defined v0.1** |
 | P03 | Child Switcher | Switch between linked children | Must | To detail |
 | P04 | Attendance | View daily / monthly / term attendance | Must | To detail |
 | P05 | Homework | View subject-wise assignments and attachments | Must | To detail |
@@ -21,6 +21,132 @@ The purpose of this inventory is to translate approved business requirements int
 | P11 | Notifications | Consolidated alert timeline | Must | To detail |
 | P12 | Calendar | View important school dates | Should | To detail |
 | P13 | More / Settings | Profile, receipts, downloads, support | Should | To detail |
+
+
+
+## P02 — Parent Home Dashboard Functional Specification
+
+**Status:** Defined v0.1
+
+### Product Intent
+The Parent Home Dashboard is a **summary + navigation screen**, not a detailed ERP screen.
+
+Its purpose is to answer one question quickly:
+
+**"What does the parent need to know about their child today?"**
+
+### Top Area
+Show the currently selected child:
+- Child name
+- Profile photo / avatar
+- Class and section
+- Child switcher when 2+ children are linked
+
+### Primary Information — Visible Without Scrolling
+Keep the first viewport focused on the highest-value daily items only:
+
+1. **Today's Attendance**
+   - Present / Absent / Late
+   - Tap opens Attendance
+
+2. **Homework Due**
+   - Pending count
+   - Nearest due item / subject where useful
+   - Tap opens Homework
+
+3. **Latest Important Notice**
+   - Most relevant current school/class notice
+   - Tap opens Notices
+
+4. **Fees Due**
+   - Outstanding amount
+   - Due date when applicable
+   - Tap opens Fees
+
+5. **Upcoming Event**
+   - Next important event such as PTM, exam, holiday, or school event
+   - Tap opens Calendar / Event detail
+
+6. **Quick Actions**
+   - Request Leave
+   - Pay / View Fees
+   - View Homework
+   - Contact / Message School (subject to final messaging scope)
+
+### Recent Updates
+Below the first viewport, show a compact recent-activity feed such as:
+- New notice
+- Homework posted
+- Leave status changed
+- Fee reminder
+- Attendance update
+
+### Multiple Children
+- Do not mix data for multiple children in one dashboard.
+- Show one selected child at a time.
+- Parent can switch children from the top child selector.
+- Dashboard content refreshes fully to the selected child context.
+
+### Important Today vs Secondary Information
+
+**Important Today**
+- Today's attendance
+- Urgent / recent notices
+- Homework due
+- Fees due soon
+- Leave status
+- Events today / tomorrow
+
+**Secondary**
+- Full attendance history
+- Old notices
+- Archived homework
+- Payment history
+- Downloads
+- Profile / settings
+
+### MVP Field Principle
+Only the minimum fields required to support the above experience are mandatory for v0.1.
+
+The product should **not delay MVP** in order to capture every possible future field.
+
+Additional fields, cards, and modules may be introduced after MVP validation.
+
+### Extensibility Guardrail
+Implementation must support future extension without redesigning the entire product.
+
+At architecture stage:
+- Prefer modular feature components over one large dashboard implementation.
+- Keep dashboard cards independently configurable where practical.
+- Avoid hard-coding business logic directly into UI components.
+- Keep APIs versioned and additive where possible.
+- Design data structures so optional future attributes can be added without breaking existing flows.
+- New modules/pages should be able to plug into navigation without major restructuring.
+
+### Empty / Missing Data States
+Examples:
+- No homework: **"No homework due."**
+- No fees due: **"No outstanding fees."**
+- No notice: **"No new notices."**
+- No upcoming event: **"No upcoming events."**
+
+Do not show blank cards with no explanation.
+
+### Permissions
+A parent sees only:
+- Their authorized school context
+- Their linked child / children
+- Data the school permits for the parent role
+
+### Acceptance Criteria
+1. Parent can see the selected child's identity and class context.
+2. Parent can switch between linked children when more than one exists.
+3. Core daily information is visible without deep navigation.
+4. Each summary card routes to the relevant detailed module.
+5. Child data is never mixed across siblings.
+6. Empty states are understandable and do not appear broken.
+7. Dashboard remains usable even when some optional modules are not enabled.
+8. Adding future cards or fields should not require redesigning the entire dashboard.
 
 
 ## P01 — Login / OTP Functional Specification
