@@ -1,0 +1,31 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies / builds
+node_modules/
+build/
+dist/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+
+# Logs
+*.log
+
+# Local databases / temp
+*.sqlite
+*.db
+.tmp/
+tmp/
