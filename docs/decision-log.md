@@ -9,3 +9,6 @@ Record important product, UX, business, technical, compliance, and delivery deci
 | 2026-10-30 | DEC-003 | Next deliverable is complete Screen & Flow Inventory before coding | Reduces ambiguity and prevents premature architecture / development | Approved |
 | 2026-10-30 | DEC-004 | Parent experience will be mobile-first; teacher/admin experience will initially be web-first | Matches expected usage patterns while reducing initial development scope | Approved |
 | 2026-10-30 | DEC-005 | GitHub will be the project source of truth | Supports asynchronous founder collaboration, history, review, and future code management | Approved |
+
+| 2026-10-30 | DEC-006 | Optimize for MVP speed; do not wait to capture every possible field before building | Product scope will evolve; extensible architecture is more valuable than exhaustive upfront field design | Approved |
+| 2026-10-30 | DEC-007 | Build SchoolBridge as a modular, extensible product so new fields, dashboard cards, pages, and modules can be added incrementally | Supports MVP-first delivery and later scale without major rework | Approved |
